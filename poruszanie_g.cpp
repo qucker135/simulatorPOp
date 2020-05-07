@@ -69,13 +69,16 @@ class Samozywne:public Mikroby{
                         break;
                  }
              }
-		 }while(!plansza[tX][tY]==NULL);
-
+		 }while(!plansza[tX][tY]==NULL && plansza[tX][tY]->toString()!="W" && plansza[tX][tY]->toString()!="D" );
+//          if(plansza[tX][tY]->toString()=="W") getH2O();
+//          else if(plansza[tX][tY]->toString()=="D") getCO2();
+          /*else*/{
 		  plansza[tX][tY]=plansza[tempX][tempY];
 		  plansza[tempX][tempY]=NULL;
 		  tempX=tX;
 		  tempY=tY;
 		  zdolnoscRuchu=0;
+          }
 		 }
 
 };
@@ -120,14 +123,16 @@ protected:
                         break;
                  }
              }
-		 }while(!plansza[tX][tY]==NULL);
-
+		 }while(!plansza[tX][tY]==NULL && plansza[tX][tY]->toString()!="T" && plansza[tX][tY]->toString()!="G");
+//          if(plansza[tX][tY]->toString()=="T") getTlen();
+//          else if(plansza[tX][tY]->toString()=="G") getGlukoza();
+          /*else*/{
 		  plansza[tX][tY]=plansza[tempX][tempY];
 		  plansza[tempX][tempY]=NULL;
 		  tempX=tX;
 		  tempY=tY;
 		  zdolnoscRuchu=0;
-
+          }
 		 }
 };
 class Reducenci:public Mikroby{
@@ -170,13 +175,16 @@ protected:
                     break;
                  }
              }
-		 }while(!plansza[tX][tY]==NULL);
-
+		 }while(!plansza[tX][tY]==NULL && plansza[tX][tY]->toString()!="E" && plansza[tX][tY]->toString()!="M");
+//          if(plansza[tX][tY]->toString()=="E") getEtanol();
+//          else if(plansza[tX][tY]->toString()=="M") getMetan();
+          /*else*/{
 		  plansza[tX][tY]=plansza[tempX][tempY];
 		  plansza[tempX][tempY]=NULL;
 		  tempX=tX;
 		  tempY=tY;
 		  zdolnoscRuchu=0;
+          }
 		 }
 };
 main(){
@@ -189,6 +197,7 @@ main(){
                         }
                         }
                         plansza[5][5]=new Samozywne();
+                        //Proba uzycia konstruktora do zainicjalizowania pozycji (X,Y)
 //                        plansza[5][5] = new Samozywne(5,5);
 //                        cout << plansza[5][5]->tempX;
 //                        getch();
