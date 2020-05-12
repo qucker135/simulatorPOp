@@ -1,58 +1,29 @@
-
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
 #include <conio.h>
 
-
 using namespace std;
-class Object;
-Object*** plansza;
-//int height = 0, width = 0;
-
-class Object {
-protected:
-	bool zdolnoscRuchu;
-public:
-	int tempX;
-	int tempY;
-	virtual void ruch(Object*** plansza, const int N, int& tempX, int& tempY, int width, int heigh);
-	virtual bool getZdolnoscRuchu() ;
-	virtual void setZdolnoscRuchu(int a) ;
-	virtual string toString();
-};
-
-class Chemiczne : public Object {
-protected:
-	bool zdolnoscRuchu ;
-};
-
-class Zwiazki : public Chemiczne {
-protected:
-	bool czy_toksyczny;
-public:
-	bool getCzyToksyczny();
-};
-
-class Metan : public Zwiazki {
-private:
-	bool czy_toksyczny ;
-	int toksycznosc ;
-
-public:
-	virtual string toString();
-	int getToksycznosc()
-};
 
 
-class Etanol : public Zwiazki {
+class Metan:public Zwiazki{
 private:
 	bool czy_toksyczny ;
 	int toksycznosc ;
 public:
 	virtual string toString();
-	int getToksycznosc()
-	}
+	int getToksycznosc();
+};
+
+
+class Etanol:public Zwiazki {
+private:
+	bool czy_toksyczny ;
+	int toksycznosc ;
+public:
+	virtual string toString();
+	int getToksycznosc();
+
 };
 
 
@@ -69,6 +40,7 @@ private:
 	bool czy_toksyczny ;
 public:
 	virtual string toString();
+	void ruch(Object***,const int,int&,int&,int,int);
 };
 
 

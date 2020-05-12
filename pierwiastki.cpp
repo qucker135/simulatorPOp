@@ -4,11 +4,15 @@
 #include <fstream>
 #include <stdlib.h>
 #include <conio.h>
+#include "object.h"
+#include "pierwiastki.h"
+#include "zwiazki.h"
+#include"mikroby.h"
 using namespace std;
 
 
-		virtual string Wodor :: toString(){return "H";}
-		virtual void Wodor :: ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int heigh)
+		 string Wodor :: toString(){return "H";}
+		 void Wodor :: ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int heigh)
 		 {
 		     int tX;
              int tY;
@@ -52,10 +56,10 @@ using namespace std;
 		 }
 
 
-		virtual string Wegiel :: toString(){return "C";}
+		 string Wegiel :: toString(){return "C";}
 
-		virtual string Tlen :: toString(){return "O";}
-		virtual void Tlen :: ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int heigh)
+		 string Tlen :: toString(){return "O";}
+		 void Tlen :: ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int heigh)
 		 {
 		     int tX;
              int tY;

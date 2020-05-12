@@ -3,13 +3,16 @@
 #include <fstream>
 #include <stdlib.h>
 #include "object.h"
+#include "pierwiastki.h"
+#include "zwiazki.h"
+#include"mikroby.h"
 //#ifndef AUX_H
 //#include "aux.h"
 //#endif
 
 using namespace std;
 
-class Object;
+//class Object;
 class Init;
 
 Object*** plansza;
@@ -24,63 +27,6 @@ void sleep(int milliseconds){
 	}while((double)(current-start)/CLOCKS_PER_SEC * 1000.0 < milliseconds);
 }
 
-/*class Object{
-	protected:
-		bool zdolnoscRuchu;
-	public:
-		//virtual bool getZdolnoscRuchu()=0;
-		virtual string toString()=0;
-		bool getZdolnoscRuchu(){ return zdolnoscRuchu;}
-};*/
-
-class Chemiczne:public Object{};
-class Pierwiastek:public Chemiczne{};
-class Wodor:public Pierwiastek{
-	public:
-		virtual string toString(){return "H";}
-};
-class Wegiel:public Pierwiastek{
-	public:
-		virtual string toString(){return "C";}
-};
-class Tlen:public Pierwiastek{
-	public:
-		virtual string toString(){return "O";}
-};
-class Zwiazki:public Chemiczne{};
-class Metan:public Zwiazki{
-	public:
-		virtual string toString(){return "M";}
-};
-class Etanol:public Zwiazki{
-	public:
-		virtual string toString(){return "E";}
-};
-class Woda:public Zwiazki{
-	public:
-		virtual string toString(){return "W";}
-};
-class Dwutlenek:public Zwiazki{
-	public:
-		virtual string toString(){return "D";}
-};
-class Glukoza:public Zwiazki{
-	public:
-		virtual string toString(){return "G";}
-};
-class Mikroby:public Object{};
-class Samozywne:public Mikroby{
-	public:
-		virtual string toString(){return "S";}
-};
-class Cudzozywne:public Mikroby{
-	public:
-		virtual string toString(){return "U";}
-};
-class Reducenci:public Mikroby{
-	public:
-		virtual string toString(){return "R";}
-};
 
 class Init{
 	public:
@@ -151,16 +97,16 @@ class Init{
 						getline(file_read,strBfr);
 						for(int j=0;j<g_width && j<strBfr.length(); j++){
 							switch(strBfr[j]){
-								//WodÃ³r - H
-								//WÄ™giel -C
+								//Wodór - H
+								//Wêgiel -C
 								//Tlen -- O
 								//Metan - M
 								//Etanol- E
 								//Woda -- W
 								//CO2 --- D
 								//Glukoza G
-								//SamoÅ¼.- S
-								//CudzoÅ¼. U
+								//Samo¿.- S
+								//Cudzo¿. U
 								//Reduc.  R
 
 
@@ -190,7 +136,7 @@ class Init{
 								break;
 								case 'D':
 								case 'd':
-									plansza[i][j] = new Dwutlenek();
+									plansza[i][j] = new DwutlenekWegla();
 								break;
 								case 'G':
 								case 'g':
@@ -256,16 +202,16 @@ class Init{
 					//while(!file_read.eof()){
 						//getline(file_read,strBfr);
 						for(int j=0;j<g_width; j++){
-								//WodÃ³r - H
-								//WÄ™giel -C
+								//Wodór - H
+								//Wêgiel -C
 								//Tlen -- O
 								//Metan - M
 								//Etanol- E
 								//Woda -- W
 								//CO2 --- D
 								//Glukoza G
-								//SamoÅ¼.- S
-								//CudzoÅ¼. U
+								//Samo¿.- S
+								//Cudzo¿. U
 								//Reduc.  R
 							int randomness = rand()%1024;
 
@@ -288,7 +234,7 @@ class Init{
 								plansza[i][j] = new Woda();
 							}
 							else if(randomness>=887 && randomness<=936){//range 50
-								plansza[i][j] = new Dwutlenek();
+								plansza[i][j] = new DwutlenekWegla();
 							}
 							else if(randomness>=937 && randomness<=986){//range 50
 								plansza[i][j] = new Glukoza();
@@ -335,16 +281,16 @@ Init::initSource Init::source;
 //int Init::height;
 //int Init::width;
 
-//WodÃ³r - H
-//WÄ™giel -C
+//Wodór - H
+//Wêgiel -C
 //Tlen -- O
 //Metan - M
 //Etanol- E
 //Woda -- W
 //CO2 --- D
 //Glukoza G
-//SamoÅ¼.- S
-//CudzoÅ¼. U
+//Samo¿.- S
+//Cudzo¿. U
 //Reduc.  R
 
 class CSVWriter{

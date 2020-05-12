@@ -6,20 +6,12 @@
 #include <conio.h>
 using namespace std;
 
-class Object{
-	//protected:
-	//	bool zdolnoscRuchu;
-	public:
-		//virtual bool getZdolnoscRuchu()=0;
-		virtual string toString()=0;
-};
 
-class Chemiczne:public Object{};
-class Pierwiastek:public Chemiczne{};
 class Wodor:public Pierwiastek{
 	public:
+	    int zdolnoscRuchu =1;
 		virtual string toString();
-		virtual void ruch(Object***,const int,int,int,int,int);
+		 void ruch(Object***,const int,int&,int&,int,int);
 };
 class Wegiel:public Pierwiastek{
 	public:
@@ -27,7 +19,8 @@ class Wegiel:public Pierwiastek{
 };
 class Tlen:public Pierwiastek{
 	public:
+	    int zdolnoscRuchu =1;
 		virtual string toString();
-		virtual void ruch(Object***,const int,int,int,int,int);
+		virtual void ruch(Object***,const int,int&,int&,int,int);
 };
 

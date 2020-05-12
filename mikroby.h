@@ -1,17 +1,9 @@
-class Mikroby
-{
-	protected:
-		bool zdolnosc_ruchu;
-		int energia;
-		int minimalna_energia_do_podzialu;
+#include <iostream>
+#include <time.h>
+#include <cstdlib>
+#include <conio.h>
 
-	public:
-		int getEnergia();
-		void zbierz();
-		void przerob();
-		void podziel();
-		void skonaj();
-};
+using namespace std;
 
 class Samozywne: public Mikroby
 {
@@ -26,6 +18,9 @@ class Samozywne: public Mikroby
 		int getZatrucie();
 		int getMaxZatrucie();
 		void odtruj();
+//		Samozywne (int h2o, int co2, int zat);
+        void ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int height);
+        string toString();
 };
 
 class Cudzozywne: public Mikroby
@@ -41,7 +36,8 @@ class Cudzozywne: public Mikroby
 		int getZatrucie();
 		int getMaxZatrucie();
 		void odtruj();
-
+        void ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int height);
+        string toString();
 };
 
 class Reducenci: public Mikroby
@@ -52,4 +48,6 @@ class Reducenci: public Mikroby
 	public:
 		int getEtanol();
 		int getMetan();
+		void ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int height);
+		string toString();
 };

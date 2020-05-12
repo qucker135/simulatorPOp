@@ -1,27 +1,30 @@
 #include<iostream>
-#include"naglowki.h"
+#include "object.h"
+#include "pierwiastki.h"
+#include "zwiazki.h"
+#include"mikroby.h"
 using namespace std;
 
-int Mikroby::getEnergia()
-{
-	return energia;
-}
-void Mikroby::zbierz()
-{
-	
-}
-void Mikroby::przerob()
-{
-	
-}
-void Mikroby::podziel()
-{
-	
-}
-void Mikroby::skonaj()
-{
-	
-}
+//int Mikroby::getEnergia()
+//{
+//	return energia;
+//}
+//void Mikroby::zbierz()
+//{
+//
+//}
+//void Mikroby::przerob()
+//{
+//
+//}
+//void Mikroby::podziel()
+//{
+//
+//}
+//void Mikroby::skonaj()
+//{
+//
+//}
 ///////////////////////////////
 int Samozywne::getH2O()
 {
@@ -41,27 +44,27 @@ int Samozywne::getMaxZatrucie()
 }
 void Samozywne::odtruj()
 {
-	
+
 }
-Samozywne::Samozywne (int h2o, int co2, int zat)
-{
-	zebrane_H2O=h2o;
-	zebrane_CO2=co2;
-	zatrucie=zat;
-}
-virtual string Samozywne::toString()
+//Samozywne::Samozywne (int h2o, int co2, int zat)
+//{
+//	zebrane_H2O=h2o;
+//	zebrane_CO2=co2;
+//	zatrucie=zat;
+//}
+ string Samozywne::toString()
 {
 	return "S";
 }
-bool Samozywne::getZdolnoscRuchu() 
-{
-	return zdolnoscRuchu;
-}
-void Samozywne::setZdolnoscRuchu(int a) 
-{
-	zdolnoscRuchu=a;
-}
-virtual void Samozywne::ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int height)
+//bool Samozywne::getZdolnoscRuchu()
+//{
+//	return zdolnoscRuchu;
+//}
+//void Samozywne::setZdolnoscRuchu(int a)
+//{
+//	zdolnoscRuchu=a;
+//}
+ void Samozywne::ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int height)
 		 {
 		     int tX;
              int tY;
@@ -125,27 +128,27 @@ int Cudzozywne::getMaxZatrucie()
 }
 void Cudzozywne::odtruj()
 {
-	
+
 }
-virtual string Cudzozywne::toString()
+ string Cudzozywne::toString()
 {
 	return "U";
 }
-bool Cudzozywne::getZdolnoscRuchu() 
-{
-	return zdolnoscRuchu;
-}
-void Cudzozywne::setZdolnoscRuchu(int a) 
-{
-	zdolnoscRuchu=a;
-}
-Cudzozywne::Cudzozywne(int glukoza, int tlen, int zat) 
-{
-	zebrana_glukoza=glukoza;
-	zebrany_tlen=tlen;
-	zatrucie=zat;	
-}
-virtual void Cudzozywne::ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int height)
+//bool Cudzozywne::getZdolnoscRuchu()
+//{
+//	return zdolnoscRuchu;
+//}
+//void Cudzozywne::setZdolnoscRuchu(int a)
+//{
+//	zdolnoscRuchu=a;
+//}
+//Cudzozywne::Cudzozywne(int glukoza, int tlen, int zat)
+//{
+//	zebrana_glukoza=glukoza;
+//	zebrany_tlen=tlen;
+//	zatrucie=zat;
+//}
+ void Cudzozywne::ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int height)
 		 {
 		     int tX;
              int tY;
@@ -190,7 +193,7 @@ virtual void Cudzozywne::ruch(Object*** plansza,const int N,int &tempX,int &temp
 		  zdolnoscRuchu=0;
           }
 		 }
-		 
+
 ///////////////////////////////
 int Reducenci::getEtanol()
 {
@@ -200,24 +203,24 @@ int Reducenci::getMetan()
 {
 	return zebrany_metan;
 }
-virtual string Reducenci::toString()
+ string Reducenci::toString()
 {
 	return "R";
 }
-bool Reducenci::getZdolnoscRuchu() 
-{
-	return zdolnoscRuchu;
-}
-void Reducenci::setZdolnoscRuchu(int a) 
-{
-	zdolnoscRuchu=a;
-}
-Reducenci::Reducenci(int etanol, int metan) 
-{
-	zebrany_etanol=etanol;
-	zebrany_metan=metan;	
-}
-virtual void Reducenci::ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int height)
+//bool Reducenci::getZdolnoscRuchu()
+//{
+//	return zdolnoscRuchu;
+//}
+//void Reducenci::setZdolnoscRuchu(int a)
+//{
+//	zdolnoscRuchu=a;
+//}
+//Reducenci::Reducenci(int etanol, int metan)
+//{
+//	zebrany_etanol=etanol;
+//	zebrany_metan=metan;
+//}
+ void Reducenci::ruch(Object*** plansza,const int N,int &tempX,int &tempY,int width,int height)
 		 {
 		     int tX;
              int tY;
