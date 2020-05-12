@@ -18,7 +18,7 @@ class Chemiczne:public Object{};
 class Pierwiastek:public Chemiczne{};
 class Wodor:public Pierwiastek{
 	public:
-		virtual string toString(){return "H";}
+		virtual string toString();
 		virtual void ruch(Object***,const int,int,int,int,int);
 };
 class Wegiel:public Pierwiastek{

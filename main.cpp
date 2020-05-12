@@ -31,7 +31,7 @@ void sleep(int milliseconds){
 		//virtual bool getZdolnoscRuchu()=0;
 		virtual string toString()=0;
 		bool getZdolnoscRuchu(){ return zdolnoscRuchu;}
-};*/ 
+};*/
 
 class Chemiczne:public Object{};
 class Pierwiastek:public Chemiczne{};
@@ -78,7 +78,7 @@ class Cudzozywne:public Mikroby{
 		virtual string toString(){return "U";}
 };
 class Reducenci:public Mikroby{
-	public: 
+	public:
 		virtual string toString(){return "R";}
 };
 
@@ -97,7 +97,7 @@ class Init{
 		cout<<" v. 1.0"<<endl;
 		cout<<endl;
 		sleep(1000);
-		
+
 		cout<<"Wybierz opcje inicjalizacji stanu poczatkowego: "<<endl;
 		cout<<"[1] - Stan poczatkowy wczytany z pliku\n";
 		cout<<"[2] - Stan poczatkowy wylosowany\n";
@@ -111,12 +111,12 @@ class Init{
 				source = initSource::INIT_RANDOM;
 			break;
 		}
-		
+
 		if(source == initSource::INIT_FROM_FILE){
 			string filename="";
 			do{
 				cout<<"Podaj nazwe pliku:"<<endl;
-				cin>>filename;		
+				cin>>filename;
 			}while(filename=="");
 
 			if(filename.length()<4 || filename.substr(filename.length()-4,4)!=".txt") filename = filename + ".txt";
@@ -134,7 +134,7 @@ class Init{
 					getline(file_read,strBfr);
 					g_width = stoi(strBfr);
 
-					//cout<<height<<" "<<width<<endl;	
+					//cout<<height<<" "<<width<<endl;
 
 					plansza = new Object**[g_height];
 					for(int i=0;i<g_height;i++){
@@ -207,12 +207,12 @@ class Init{
 								case 'R':
 								case 'r':
 									plansza[i][j] = new Reducenci();
-								break;	
-							}	
-						}	
+								break;
+							}
+						}
 					}
 					//
-					
+
 					for(int i=0;i<g_height;i++){
 						for(int j=0;j<g_width;j++){
 							if(plansza[i][j]==NULL) cout<<".";
@@ -223,10 +223,10 @@ class Init{
 
 				}
 				catch(...){
-					cout<<"Nieprawidlowy format pliku wejsciowego!"<<endl;	
+					cout<<"Nieprawidlowy format pliku wejsciowego!"<<endl;
 				}
 
-			}				
+			}
 		}
 		else if(source == initSource::INIT_RANDOM){
 			int bfr=0;
@@ -240,7 +240,7 @@ class Init{
 				cin>>bfr;
 			}while(bfr<=0||bfr>100);
 			g_width = bfr;
-		
+
 				try{
 					plansza = new Object**[g_height];
 					for(int i=0;i<g_height;i++){
@@ -270,19 +270,19 @@ class Init{
 							int randomness = rand()%1024;
 
 							if(randomness>=512 && randomness<=586){//range 75
-								plansza[i][j] = new Wodor();	
+								plansza[i][j] = new Wodor();
 							}
 							else if(randomness>=587 && randomness<=661){//range 75
 								plansza[i][j] = new Wegiel();
 							}
 							else if(randomness>=662 && randomness<=736){//range 75
-								plansza[i][j] = new Tlen();		
+								plansza[i][j] = new Tlen();
 							}
 							else if(randomness>=737 && randomness<=786){//range 50
 								plansza[i][j] = new Metan();
 							}
 							else if(randomness>=787 && randomness<=836){//range 50
-								plansza[i][j] = new Etanol();	
+								plansza[i][j] = new Etanol();
 							}
 							else if(randomness>=837 && randomness<=886){//range 50
 								plansza[i][j] = new Woda();
@@ -302,25 +302,25 @@ class Init{
 							else if(randomness>=1013 && randomness<=1024){
 								plansza[i][j] = new Cudzozywne();
 							}
-						
-						}	
+
+						}
 					}
-					
+
 					//Wypisz zawartosc planszy
-					/*for(int i=0;i<g_height;i++){
+					for(int i=0;i<g_height;i++){
 						for(int j=0;j<g_width;j++){
-							if(plansza[i][j]==NULL) cout<<".";
-							else cout<<plansza[i][j]->toString();
+							if(plansza[i][j]==NULL) cout<<" .";
+							else cout<< " " << plansza[i][j]->toString();
 						}
 						cout<<"\n";
-					}*/
+					}
 
 				}
 				catch(...){
-					cout<<"Blad wewnetrzny programu!"<<endl;	
+					cout<<"Blad wewnetrzny programu!"<<endl;
 				}
 
-		
+
 		}
 
 
@@ -349,12 +349,12 @@ Init::initSource Init::source;
 
 class CSVWriter{
 	static void write(string filename,Object*** plansza,int height,int width){
-		if(filename.length()<4 || filename.substr(filename.length()-4,4)!=".csv") filename = filename + ".csv";	
+		if(filename.length()<4 || filename.substr(filename.length()-4,4)!=".csv") filename = filename + ".csv";
 		ofstream file_write(filename);
 		file_write<<"Wodor,Wegiel,Tlen,Metan,Etanol,Woda,Dwutlenek,Glukoza,Samozywne,Cudzozywne,Reducenci\n";
 		file_write<<"H,C,O,M,E,W,D,G,S,U,R\n";
-		int H=0,C=0,O=0,M=0,E=0,W=0,D=0,G=0,S=0,U=0,R=0;	
-		
+		int H=0,C=0,O=0,M=0,E=0,W=0,D=0,G=0,S=0,U=0,R=0;
+
 		for(int i=0;i<height;i++){
 			for(int j=0;j<width;j++){
 				if(plansza[i][j]!=NULL){
@@ -408,7 +408,7 @@ int main(){
 		delete[] plansza;
 	}
 	catch(...){
-		cout<<"Holy crap"<<endl;	
+		cout<<"Holy crap"<<endl;
 	}*/
 
 	return 0;
