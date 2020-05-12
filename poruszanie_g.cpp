@@ -86,7 +86,7 @@ class Cudzozywne:public Mikroby{
 protected:
 		bool zdolnoscRuchu=1;
 	public:
-		virtual string toString(){return "C";}
+		virtual string toString(){return "U";}
 	    int tempX;
 	    int tempY;
 	    bool getZdolnoscRuchu() {return zdolnoscRuchu;}
