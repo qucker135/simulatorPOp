@@ -5,10 +5,7 @@
 #include "object.h"
 #include "pierwiastki.h"
 #include "zwiazki.h"
-#include"mikroby.h"
-//#ifndef AUX_H
-//#include "aux.h"
-//#endif
+#include "mikroby.h"
 
 using namespace std;
 
@@ -271,6 +268,17 @@ class Init{
 
 
 	}
+	static void initGarbage(Object*** plansza, int g_height, int g_width){
+		for(int i=0;i<g_height;i++){
+			for(int j=0;j<g_width;j++){
+				cout<<i<<" "<<j<<endl;
+				if(!plansza[i][j]==NULL) {delete plansza[i][j];}
+			}
+			delete[] plansza[i];
+		}
+		delete[] plansza;
+
+	}  
 	private:
 	static initSource source;
 	//static int height;
@@ -342,20 +350,20 @@ int main(){
 	srand(time(NULL));
 	Init::initChoice(plansza,height,width);
 
-	//Zakomentowane, gdyz powoduje Segmentation fault: core dumped
-	/*try{
-		for(int i=0;i<height;i++){
-			for(int j=0;j<width;j++){
-				cout<<i<<" "<<j<<endl;
-				//if(plansza[i][j]!=NULL) {delete plansza[i][j];}
-			}
-			delete[] plansza[i];
+
+	cout<<height<<endl;
+	cout<<width<<endl;
+
+	//Zakomentowane, gdyz powoduje Segmentation fault
+	/*for(int i=0;i<height;i++){
+		for(int j=0;j<width;j++){
+			if(plansza[i][j]==NULL) cout<<".";
+			else cout<<plansza[i][j]->toString();
 		}
-		delete[] plansza;
-	}
-	catch(...){
-		cout<<"Holy crap"<<endl;
+		cout<<"\n";
 	}*/
+
+	//Init::initGarbage(plansza,height,width);
 
 	return 0;
 }

@@ -1,11 +1,18 @@
-#include<iostream>
-#include<iostream>
+#ifndef PIERWIASTKI_H
+#define PIERWIASTKI_H
+#include <iostream>
 #include <time.h>
 #include <fstream>
 #include <stdlib.h>
-#include <conio.h>
+
+#include "object.h"
+
+//#include <conio.h>
 using namespace std;
 
+
+class Chemiczne:public Object{};
+class Pierwiastek:public Chemiczne{};
 
 class Wodor:public Pierwiastek{
 	public:
@@ -23,4 +30,4 @@ class Tlen:public Pierwiastek{
 		virtual string toString();
 		virtual void ruch(Object***,const int,int&,int&,int,int);
 };
-
+#endif

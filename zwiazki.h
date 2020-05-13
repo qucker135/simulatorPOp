@@ -1,10 +1,16 @@
+#ifndef ZWIAZKI_H
+#define ZWIAZKI_H
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
-#include <conio.h>
+//#include <conio.h>
+#include "object.h"
+#include "pierwiastki.h"
 
 using namespace std;
 
+
+class Zwiazki:public Chemiczne{};
 
 class Metan:public Zwiazki{
 private:
@@ -52,3 +58,4 @@ public:
 	virtual string toString() ;
 	int getWartoscOdzywcza();
 };
+#endif

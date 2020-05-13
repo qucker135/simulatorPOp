@@ -2,7 +2,7 @@
 #include "object.h"
 #include "pierwiastki.h"
 #include "zwiazki.h"
-#include"mikroby.h"
+#include "mikroby.h"
 using namespace std;
 
 //int Mikroby::getEnergia()
