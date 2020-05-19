@@ -1,61 +1,50 @@
 #ifndef ZWIAZKI_H
 #define ZWIAZKI_H
 #include <iostream>
-#include <time.h>
-#include <cstdlib>
-//#include <conio.h>
 #include "object.h"
-#include "pierwiastki.h"
 
-using namespace std;
-
-
-class Zwiazki:public Chemiczne{};
+class Zwiazki:public Object{
+protected:
+	bool czyToksyczny;
+public:
+	bool getCzyToksyczny();
+	virtual string toString()=0;
+};
 
 class Metan:public Zwiazki{
-private:
-	bool czy_toksyczny ;
-	int toksycznosc ;
+	int toksycznosc;
 public:
-	virtual string toString();
+	Metan();
 	int getToksycznosc();
+	virtual string toString();
 };
 
-
-class Etanol:public Zwiazki {
-private:
-	bool czy_toksyczny ;
-	int toksycznosc ;
+class Etanol:public Zwiazki{
+	int toksycznosc;
 public:
-	virtual string toString();
+	Etanol();
 	int getToksycznosc();
-
-};
-
-
-class Woda : public Zwiazki {
-private:
-	bool czy_toksyczny ;
-public:
-	virtual string toString() ;
-};
-
-
-class DwutlenekWegla : public Zwiazki {
-private:
-	bool czy_toksyczny ;
-public:
 	virtual string toString();
-	void ruch(Object***,const int,int&,int&,int,int);
 };
 
-
-class Glukoza : public Zwiazki {
-private:
-	bool czy_toksyczny = 0;
-	int wartosc_odzywcza = 3;
+class Woda:public Zwiazki{
 public:
-	virtual string toString() ;
+	Woda();
+	virtual string toString();
+};
+
+class Dwutlenek:public Zwiazki{
+public:
+	Dwutlenek();
+	virtual string toString();
+};
+
+class Glukoza:public Zwiazki{
+	int wartoscOdzywcza;
+public:
+	Glukoza();
 	int getWartoscOdzywcza();
-};
+	virtual string toString();
+}; 
+
 #endif

@@ -1,9 +1,9 @@
 #include <iostream>
 #include "object.h"
 
-
 using namespace std;
 
-bool Object::getZdolnoscRuchu(){
-	return zdolnoscRuchu;
-}
+Object::Object():zdolnoscRuchu(false){}
+
+bool Object::getZdolnoscRuchu(){return zdolnoscRuchu;}
+

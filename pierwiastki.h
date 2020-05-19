@@ -1,33 +1,33 @@
 #ifndef PIERWIASTKI_H
 #define PIERWIASTKI_H
 #include <iostream>
-#include <time.h>
-#include <fstream>
-#include <stdlib.h>
-
 #include "object.h"
 
-//#include <conio.h>
-using namespace std;
+class Pierwiastki:public Object{
+public:
+	virtual string toString()=0;
+	virtual void syntezuj()=0;
+};
+
+class Wodor:public Pierwiastki{
+public:
+	virtual string toString();
+	virtual void syntezuj();
+	Wodor();
+};
+class Wegiel:public Pierwiastki{
+public:
+	virtual string toString();
+	virtual void syntezuj();
+	Wegiel();
+};
+class Tlen:public Pierwiastki{
+public:
+	virtual string toString();
+	virtual void syntezuj();
+	Tlen();
+};
 
 
-class Chemiczne:public Object{};
-class Pierwiastek:public Chemiczne{};
 
-class Wodor:public Pierwiastek{
-	public:
-	    int zdolnoscRuchu =1;
-		virtual string toString();
-		 void ruch(Object***,const int,int&,int&,int,int);
-};
-class Wegiel:public Pierwiastek{
-	public:
-		virtual string toString();
-};
-class Tlen:public Pierwiastek{
-	public:
-	    int zdolnoscRuchu =1;
-		virtual string toString();
-		virtual void ruch(Object***,const int,int&,int&,int,int);
-};
 #endif

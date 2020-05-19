@@ -5,11 +5,12 @@
 using namespace std;
 
 class Object{
-	protected:
-		bool zdolnoscRuchu;
-	public:
-		//virtual bool getZdolnoscRuchu()=0;
-		virtual string toString()=0;
-		bool getZdolnoscRuchu();
+protected:
+	bool zdolnoscRuchu;
+public:
+	Object();
+	bool getZdolnoscRuchu();
+	virtual string toString()=0;
 };
+
 #endif
