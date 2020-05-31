@@ -13,4 +13,5 @@ int main(){
 	//Object o1;
 	//Pierwiastki p1;
 	Plansza p;
+	//p.run();
 }

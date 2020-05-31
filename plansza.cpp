@@ -248,8 +248,6 @@ Plansza::Plansza(){
 				catch(...){
 					cerr<<"Blad wewnetrzny programu!"<<endl;	
 				}
-
-		
 	
 		}
 }
@@ -265,4 +263,8 @@ Plansza::~Plansza(){
 		}
 		delete[] plansza;
 	}
+}
+
+void Plansza::run(){//w sumie nie musi argumentow, bo wszystko ma jako wlasne atrybuty
+;//;
 }

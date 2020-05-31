@@ -18,7 +18,7 @@ main.o: main.cpp object.h object.cpp pierwiastki.h pierwiastki.cpp zwiazki.h zwi
 object.o: object.h object.cpp
 	$(CC) object.cpp -c -o object.o
 
-pierwiaski.o: object.h object.cpp pierwiastki.h pierwiastki.cpp
+pierwiaski.o: object.h object.cpp pierwiastki.h pierwiastki.cpp zwiazki.h zwiazki.cpp
 	$(CC) pierwiastki.cpp -c -o pierwiastki.o
 
 zwiazki.o: object.h object.cpp zwiazki.h zwiazki.cpp

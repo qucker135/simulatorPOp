@@ -17,6 +17,7 @@ class Plansza{
 public:
 	Plansza();
 	~Plansza();
+	void run();//runs a simulation
 };
 
 #endif
