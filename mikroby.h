@@ -12,6 +12,7 @@ public:
 	Mikroby(int);
 	int getEnergia();
 	int getMinEnergia();
+	void zmniejszEnergie();
 	virtual void zbierz(Object***,int,int,int,int,char)=0;
 	virtual void przerob()=0;
 	virtual void podziel(Object***,int,int,int,int,char)=0;

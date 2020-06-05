@@ -5,12 +5,14 @@
 using namespace std;
 
 Mikroby::Mikroby():MinEnergiaDoPodzialu(rand()%250+170){
-	energia = 125; //roboczo
+	energia = 10; //roboczo
 }
 
 Mikroby::Mikroby(int minEnergia):MinEnergiaDoPodzialu(minEnergia){}
 
 int Mikroby::getEnergia(){return energia;}
+
+void Mikroby::zmniejszEnergie(){energia--;}
 
 int Mikroby::getMinEnergia(){return MinEnergiaDoPodzialu;}
 

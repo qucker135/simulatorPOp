@@ -33,7 +33,7 @@ Woda::Woda(){
 string Woda::toString(){return "W";}
 
 Dwutlenek::Dwutlenek(){
-	zdolnoscRuchu = false;
+	zdolnoscRuchu = true;
 	czyToksyczny = false;
 }
 

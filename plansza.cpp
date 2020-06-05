@@ -266,5 +266,203 @@ Plansza::~Plansza(){
 }
 
 void Plansza::run(){//w sumie nie musi argumentow, bo wszystko ma jako wlasne atrybuty
-;//;
+	char** dirs = new char* [height];
+	for(int i=0; i<height; i++){
+		dirs[i] = new char[width];	
+	}
+
+
+	fstream file_write;	
+	file_write.open("output.csv", ios::out | ios::app);
+	file_write<<"Wodor,Wegiel,Tlen,Metan,Etanol,Woda,Dwutlenek,Glukoza,Samozywne,Cudzozywne,Reducenci\n";
+	file_write<<"H,C,O,M,E,W,D,G,S,U,R\n";
+	file_write.close();
+
+	
+
+	double perc = 0.5;//czesc planszy zajeta przez obiekty
+	do{
+
+		
+
+		//Sprawdzenie licznosci planszy, i wylosowanie kierunkow
+		int covered = 0;//liczba niepustych pol planszy
+		for(int i=0;i<height;i++){
+			for(int j=0;j<width;j++){
+				if(plansza[i][j]!=NULL) covered++;
+				
+				int random = rand()%4;
+				switch(random){
+					case 0:
+						dirs[i][j] = 'w';
+					break;
+					case 1:
+						dirs[i][j] = 'a';
+					break;
+					case 2:
+						dirs[i][j] = 's';
+					break;
+					case 3:
+						dirs[i][j] = 'd';
+					break;
+				} 
+			}
+		}
+
+		//z tego miejsca nastepowac beda interakcje
+		for(int i=0;i<height;i++){
+			for(int j=0;j<width;j++){
+				if(plansza[i][j]!=NULL && plansza[i][j]->getZdolnoscRuchu()){
+					//rozne typy interakcji
+					
+					//syntezowanie(pierwiaski)
+					if(plansza[i][j]->toString() == "H" || plansza[i][j]->toString() == "O"){
+						try{
+						((Pierwiastki*)plansza[i][j])->syntezuj(plansza,height,width,plansza[i][j]->getPos(plansza,height,width).first,plansza[i][j]->getPos(plansza,height,width).second,dirs[i][j]);	
+						}
+						catch(...){;}
+					}
+
+					//zbieranie(mikroby)
+					if(plansza[i][j]->toString() == "S" || plansza[i][j]->toString() == "U" || plansza[i][j]->toString() == "R"){
+						try{
+						((Mikroby*)plansza[i][j])->zbierz(plansza,height,width,plansza[i][j]->getPos(plansza,height,width).first,plansza[i][j]->getPos(plansza,height,width).second,dirs[i][j]);	
+						}
+						catch(...){;}
+
+					}
+
+					//podzial(mikroby)
+					if(plansza[i][j]->toString() == "S" || plansza[i][j]->toString() == "U" || plansza[i][j]->toString() == "R"){
+						int random = rand()%100;
+						if(random==7){//mala szansa na podzial
+							try{
+							((Mikroby*)plansza[i][j])->podziel(plansza,height,width,plansza[i][j]->getPos(plansza,height,width).first,plansza[i][j]->getPos(plansza,height,width).second,dirs[i][j]);	
+							}
+							catch(...){;}
+						}
+
+					}
+
+					//skonaj(mikroby)
+					if(plansza[i][j]->toString() == "S" || plansza[i][j]->toString() == "U" || plansza[i][j]->toString() == "R"){
+						if(((Mikroby*)plansza[i][j])->getEnergia()<=0){
+							try{
+							((Mikroby*)plansza[i][j])->skonaj(plansza,height,width,plansza[i][j]->getPos(plansza,height,width).first,plansza[i][j]->getPos(plansza,height,width).second);	
+							}
+							catch(...){;}		
+						}
+					}
+
+					
+
+					
+					//przemieszczanie
+					if(i>0 && dirs[i][j] == 'w' && plansza[i-1][j] == NULL)
+					{
+						/*if(plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R"){
+							((Mikroby*)plansza[i][j])->zmniejszEnergie();
+						}*/
+						plansza[i-1][j] = plansza[i][j];
+						plansza[i][j] = NULL;
+						
+					}
+					else if(j>0 && dirs[i][j] == 'a' && plansza[i][j-1] == NULL)
+					{
+						/*if(plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R"){
+							((Mikroby*)plansza[i][j])->zmniejszEnergie();
+						}*/
+						plansza[i][j-1] = plansza[i][j];
+						plansza[i][j] = NULL;
+					}
+					else if(i<height-1 && dirs[i][j] == 's' && plansza[i+1][j] == NULL)
+					{
+						/*if(plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R"){
+							((Mikroby*)plansza[i][j])->zmniejszEnergie();
+						}*/
+						plansza[i+1][j] = plansza[i][j];
+						plansza[i][j] = NULL;
+					}
+					else if(j<width-1 && dirs[i][j] == 'd' && plansza[i][j+1] == NULL)
+					{
+						/*if(plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R"){
+							((Mikroby*)plansza[i][j])->zmniejszEnergie();
+						}*/
+						plansza[i][j+1] = plansza[i][j];
+						plansza[i][j] = NULL;
+					}
+					
+					
+
+				}
+
+			}
+		}
+
+		perc = (double)covered/(double)(height*width);
+		
+		//TEST
+		cout<<perc<<endl;
+		for(int i=0;i<height;i++){
+			for(int j=0;j<width;j++){
+				if(plansza[i][j] == NULL) cout<<".";
+				else cout<<plansza[i][j]->toString();
+			}
+			cout<<"\n";
+		}
+		cout<<"\n";
+
+		//zapis do pliku csv
+		file_write.open("output.csv", ios::out | ios::app);
+		int H=0,C=0,O=0,M=0,E=0,W=0,D=0,G=0,S=0,U=0,R=0;	
+	
+		for(int i=0;i<height;i++){
+			for(int j=0;j<width;j++){
+				if(plansza[i][j]!=NULL){	
+					string type = plansza[i][j]->toString();
+					switch(type[0]){
+						case 'H':
+							H++; break;
+						case 'C':
+							C++; break;
+						case 'O':
+							O++; break;
+						case 'M':
+							M++; break;
+						case 'E':
+							E++; break;
+						case 'W':
+							W++; break;
+						case 'D':
+							D++; break;
+						case 'G':
+							G++; break;
+						case 'S':
+							S++; break;
+						case 'U':
+							U++; break;
+						case 'R':
+							R++; break;
+					}
+				}
+			}
+		}
+
+		file_write<<H<<","<<C<<","<<O<<","<<M<<","<<E<<","<<W<<","<<D<<","<<G<<","<<S<<","<<U<<","<<R<<"\n";	
+		//H=0;C=0;O=0;M=0;E=0;W=0;D=0;G=0;S=0;U=0;R=0;
+		file_write.close();
+
+
+		sleep(1000);
+
+		
+
+	}while(perc>0.2 && perc<0.8);
+
+	cout<<"Gestosc materii spadla ponizej 0.2 lub wzrosla powyzej 0.8, KONIEC"<<endl;
+
+	for(int i=0; i<height; i++){
+		delete[] dirs[i];
+	}
+	delete[] dirs;
 }
