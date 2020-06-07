@@ -289,23 +289,26 @@ void Plansza::run(){//w sumie nie musi argumentow, bo wszystko ma jako wlasne at
 		int covered = 0;//liczba niepustych pol planszy
 		for(int i=0;i<height;i++){
 			for(int j=0;j<width;j++){
-				if(plansza[i][j]!=NULL) covered++;
+				if(plansza[i][j]!=NULL){
+					covered++;
 				
-				int random = rand()%4;
-				switch(random){
-					case 0:
-						dirs[i][j] = 'w';
-					break;
-					case 1:
-						dirs[i][j] = 'a';
-					break;
-					case 2:
-						dirs[i][j] = 's';
-					break;
-					case 3:
-						dirs[i][j] = 'd';
-					break;
-				} 
+					int random = rand()%4;
+					switch(random){
+						case 0:
+							dirs[i][j] = 'w';
+						break;
+						case 1:
+							dirs[i][j] = 'a';
+						break;
+						case 2:
+							dirs[i][j] = 's';
+						break;
+						case 3:
+							dirs[i][j] = 'd';
+						break;
+					} 
+				}
+				else dirs[i][j] = '.';
 			}
 		}
 
@@ -332,6 +335,15 @@ void Plansza::run(){//w sumie nie musi argumentow, bo wszystko ma jako wlasne at
 
 					}
 
+					//przerabianie materialu
+					if(plansza[i][j]->toString() == "S" || plansza[i][j]->toString() == "U" || plansza[i][j]->toString() == "R"){
+						try{
+						((Mikroby*)plansza[i][j])->przerob();	
+						}
+						catch(...){;}
+
+					}
+
 					//podzial(mikroby)
 					if(plansza[i][j]->toString() == "S" || plansza[i][j]->toString() == "U" || plansza[i][j]->toString() == "R"){
 						int random = rand()%100;
@@ -344,8 +356,10 @@ void Plansza::run(){//w sumie nie musi argumentow, bo wszystko ma jako wlasne at
 
 					}
 
+					
+
 					//skonaj(mikroby)
-					if(plansza[i][j]->toString() == "S" || plansza[i][j]->toString() == "U" || plansza[i][j]->toString() == "R"){
+					if(plansza[i][j]!=NULL && (plansza[i][j]->toString() == "S" || plansza[i][j]->toString() == "U" || plansza[i][j]->toString() == "R")){
 						if(((Mikroby*)plansza[i][j])->getEnergia()<=0){
 							try{
 							((Mikroby*)plansza[i][j])->skonaj(plansza,height,width,plansza[i][j]->getPos(plansza,height,width).first,plansza[i][j]->getPos(plansza,height,width).second);	
@@ -355,39 +369,61 @@ void Plansza::run(){//w sumie nie musi argumentow, bo wszystko ma jako wlasne at
 					}
 
 					
-
-					
-					//przemieszczanie
+					//przemieszczanie + warunki na wyczerpywanie sie energii mikrobow
 					if(i>0 && dirs[i][j] == 'w' && plansza[i-1][j] == NULL)
 					{
-						/*if(plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R"){
-							((Mikroby*)plansza[i][j])->zmniejszEnergie();
-						}*/
+						if(plansza[i][j]!=NULL && (plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R")){
+							((Mikroby*)plansza[i][j])->zmniejszEnergie();	
+							if(plansza[i][j]->toString()=="S"){
+								((Samozywne*)plansza[i][j])->odtruj();		
+							}
+							else if(plansza[i][j]->toString()=="U"){
+								((Cudzozywne*)plansza[i][j])->odtruj();		
+							}	
+						}
 						plansza[i-1][j] = plansza[i][j];
 						plansza[i][j] = NULL;
 						
 					}
 					else if(j>0 && dirs[i][j] == 'a' && plansza[i][j-1] == NULL)
 					{
-						/*if(plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R"){
+						if(plansza[i][j]!=NULL && (plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R")){
 							((Mikroby*)plansza[i][j])->zmniejszEnergie();
-						}*/
+							if(plansza[i][j]->toString()=="S"){
+								((Samozywne*)plansza[i][j])->odtruj();		
+							}
+							else if(plansza[i][j]->toString()=="U"){
+								((Cudzozywne*)plansza[i][j])->odtruj();		
+							}
+						}
 						plansza[i][j-1] = plansza[i][j];
 						plansza[i][j] = NULL;
 					}
 					else if(i<height-1 && dirs[i][j] == 's' && plansza[i+1][j] == NULL)
 					{
-						/*if(plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R"){
+						if(plansza[i][j]!=NULL && (plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R")){
 							((Mikroby*)plansza[i][j])->zmniejszEnergie();
-						}*/
+							if(plansza[i][j]->toString()=="S"){
+								((Samozywne*)plansza[i][j])->odtruj();		
+							}
+							else if(plansza[i][j]->toString()=="U"){
+								((Cudzozywne*)plansza[i][j])->odtruj();		
+							}
+						}
 						plansza[i+1][j] = plansza[i][j];
 						plansza[i][j] = NULL;
 					}
 					else if(j<width-1 && dirs[i][j] == 'd' && plansza[i][j+1] == NULL)
 					{
-						/*if(plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R"){
+						if(plansza[i][j]!=NULL && (plansza[i][j]->toString()=="S" || plansza[i][j]->toString()=="U" || plansza[i][j]->toString()=="R")){
 							((Mikroby*)plansza[i][j])->zmniejszEnergie();
-						}*/
+							if(plansza[i][j]->toString()=="S"){
+								((Samozywne*)plansza[i][j])->odtruj();		
+							}
+							else if(plansza[i][j]->toString()=="U"){
+								((Cudzozywne*)plansza[i][j])->odtruj();		
+							}
+						}
 						plansza[i][j+1] = plansza[i][j];
 						plansza[i][j] = NULL;
 					}
