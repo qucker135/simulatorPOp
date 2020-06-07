@@ -366,6 +366,22 @@ void Plansza::run(){//w sumie nie musi argumentow, bo wszystko ma jako wlasne at
 							}
 							catch(...){;}		
 						}
+						else if(plansza[i][j]->toString()=="S"){
+							if(((Samozywne*)plansza[i][j])->getZatrucie() > ((Samozywne*)plansza[i][j])->getMaxZatrucie()){
+								try{
+								((Mikroby*)plansza[i][j])->skonaj(plansza,height,width,plansza[i][j]->getPos(plansza,height,width).first,plansza[i][j]->getPos(plansza,height,width).second);	
+								}
+								catch(...){;}
+							}
+						}
+						else if(plansza[i][j]->toString()=="U"){
+							if(((Cudzozywne*)plansza[i][j])->getZatrucie() > ((Cudzozywne*)plansza[i][j])->getMaxZatrucie()){
+								try{
+								((Mikroby*)plansza[i][j])->skonaj(plansza,height,width,plansza[i][j]->getPos(plansza,height,width).first,plansza[i][j]->getPos(plansza,height,width).second);	
+								}
+								catch(...){;}
+							}
+						}
 					}
 
 					
