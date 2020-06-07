@@ -53,6 +53,16 @@ void Samozywne::zbierz(Object*** plansza,int height,int width,int curX,int curY,
 					plansza[curX-1][curY] = NULL;
 					zebrane_CO2+=5;
 				}
+				else if(plansza[curX-1][curY]->toString()=="E"){
+					delete plansza[curX-1][curY];
+					plansza[curX-1][curY] = NULL;
+					zatrucie+=5;
+				}
+				else if(plansza[curX-1][curY]->toString()=="M"){
+					delete plansza[curX-1][curY];
+					plansza[curX-1][curY] = NULL;
+					zatrucie+=10;
+				}
 			}
 		break;
 		case 'a':
@@ -66,6 +76,16 @@ void Samozywne::zbierz(Object*** plansza,int height,int width,int curX,int curY,
 					delete plansza[curX][curY-1];
 					plansza[curX][curY-1] = NULL;
 					zebrane_CO2+=5;
+				}
+				else if(plansza[curX][curY-1]->toString()=="E"){
+					delete plansza[curX][curY-1];
+					plansza[curX][curY-1] = NULL;
+					zatrucie+=5;
+				}
+				else if(plansza[curX][curY-1]->toString()=="M"){
+					delete plansza[curX][curY-1];
+					plansza[curX][curY-1] = NULL;
+					zatrucie+=10;
 				}
 			}
 		break;
@@ -81,6 +101,16 @@ void Samozywne::zbierz(Object*** plansza,int height,int width,int curX,int curY,
 					plansza[curX+1][curY] = NULL;
 					zebrane_CO2+=5;
 				}
+				else if(plansza[curX+1][curY]->toString()=="E"){
+					delete plansza[curX+1][curY];
+					plansza[curX+1][curY] = NULL;
+					zatrucie+=5;
+				}
+				else if(plansza[curX+1][curY]->toString()=="M"){
+					delete plansza[curX+1][curY];
+					plansza[curX+1][curY] = NULL;
+					zatrucie+=10;
+				}
 			}
 		break;
 		case 'd':
@@ -94,6 +124,16 @@ void Samozywne::zbierz(Object*** plansza,int height,int width,int curX,int curY,
 					delete plansza[curX][curY+1];
 					plansza[curX][curY+1] = NULL;
 					zebrane_CO2+=5;
+				}
+				else if(plansza[curX][curY+1]->toString()=="E"){
+					delete plansza[curX][curY+1];
+					plansza[curX][curY+1] = NULL;
+					zatrucie+=5;
+				}
+				else if(plansza[curX][curY+1]->toString()=="M"){
+					delete plansza[curX][curY+1];
+					plansza[curX][curY+1] = NULL;
+					zatrucie+=10;
 				}
 			}
 		break;
@@ -195,6 +235,16 @@ void Cudzozywne::zbierz(Object*** plansza,int height,int width,int curX,int curY
 					plansza[curX-1][curY] = NULL;
 					zebrany_tlen+=5;
 				}
+				else if(plansza[curX-1][curY]->toString()=="E"){
+					delete plansza[curX-1][curY];
+					plansza[curX-1][curY] = NULL;
+					zatrucie+=5;
+				}
+				else if(plansza[curX-1][curY]->toString()=="M"){
+					delete plansza[curX-1][curY];
+					plansza[curX-1][curY] = NULL;
+					zatrucie+=10;
+				}
 			}
 		break;
 		case 'a':
@@ -208,6 +258,16 @@ void Cudzozywne::zbierz(Object*** plansza,int height,int width,int curX,int curY
 					delete plansza[curX][curY-1];
 					plansza[curX][curY-1] = NULL;
 					zebrany_tlen+=5;
+				}
+				else if(plansza[curX][curY-1]->toString()=="E"){
+					delete plansza[curX][curY-1];
+					plansza[curX][curY-1] = NULL;
+					zatrucie+=5;
+				}
+				else if(plansza[curX][curY-1]->toString()=="M"){
+					delete plansza[curX][curY-1];
+					plansza[curX][curY-1] = NULL;
+					zatrucie+=10;
 				}
 			}
 		break;
@@ -223,6 +283,16 @@ void Cudzozywne::zbierz(Object*** plansza,int height,int width,int curX,int curY
 					plansza[curX+1][curY] = NULL;
 					zebrany_tlen+=5;
 				}
+				else if(plansza[curX+1][curY]->toString()=="E"){
+					delete plansza[curX+1][curY];
+					plansza[curX+1][curY] = NULL;
+					zatrucie+=5;
+				}
+				else if(plansza[curX+1][curY]->toString()=="M"){
+					delete plansza[curX+1][curY];
+					plansza[curX+1][curY] = NULL;
+					zatrucie+=10;
+				}
 			}
 		break;
 		case 'd':
@@ -236,6 +306,16 @@ void Cudzozywne::zbierz(Object*** plansza,int height,int width,int curX,int curY
 					delete plansza[curX][curY+1];
 					plansza[curX][curY+1] = NULL;
 					zebrany_tlen+=5;
+				}
+				else if(plansza[curX][curY+1]->toString()=="E"){
+					delete plansza[curX][curY+1];
+					plansza[curX][curY+1] = NULL;
+					zatrucie+=5;
+				}
+				else if(plansza[curX][curY+1]->toString()=="M"){
+					delete plansza[curX][curY+1];
+					plansza[curX][curY+1] = NULL;
+					zatrucie+=10;
 				}
 			}
 		break;
