@@ -1,0 +1,17 @@
+<map id="Object" name="Object">
+<area shape="rect" id="node1" title=" " alt="" coords="422,5,482,32"/>
+<area shape="rect" id="node2" href="$class_mikroby.html" title=" " alt="" coords="189,80,257,107"/>
+<area shape="rect" id="node6" href="$class_pierwiastki.html" title=" " alt="" coords="409,80,495,107"/>
+<area shape="rect" id="node10" href="$class_zwiazki.html" title=" " alt="" coords="739,80,805,107"/>
+<area shape="rect" id="node3" href="$class_cudzozywne.html" title=" " alt="" coords="5,155,101,181"/>
+<area shape="rect" id="node4" href="$class_reducenci.html" title=" " alt="" coords="125,155,208,181"/>
+<area shape="rect" id="node5" href="$class_samozywne.html" title=" " alt="" coords="232,155,325,181"/>
+<area shape="rect" id="node7" href="$class_tlen.html" title=" " alt="" coords="350,155,397,181"/>
+<area shape="rect" id="node8" href="$class_wegiel.html" title=" " alt="" coords="421,155,483,181"/>
+<area shape="rect" id="node9" href="$class_wodor.html" title=" " alt="" coords="507,155,567,181"/>
+<area shape="rect" id="node11" href="$class_dwutlenek.html" title=" " alt="" coords="592,155,675,181"/>
+<area shape="rect" id="node12" href="$class_etanol.html" title=" " alt="" coords="699,155,757,181"/>
+<area shape="rect" id="node13" href="$class_glukoza.html" title=" " alt="" coords="782,155,853,181"/>
+<area shape="rect" id="node14" href="$class_metan.html" title=" " alt="" coords="877,155,936,181"/>
+<area shape="rect" id="node15" href="$class_woda.html" title=" " alt="" coords="960,155,1016,181"/>
+</map>
